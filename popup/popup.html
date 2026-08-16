@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IsolaTOR</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-shell">
+    
+    <!-- Top Bar: Brand & Quick Actions -->
+    <header class="app-topbar">
+      <div class="brand">
+        <div class="brand-shield">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">isola<strong class="highlight">TOR</strong></span>
+          <span class="brand-badge" id="themeNameTag">Cyber v6.0</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="themeBtn" class="action-btn" title="Switch Theme" aria-label="Theme">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+        <button id="panicBtn" class="action-btn panic" title="Emergency Panic Wipe (Alt+Shift+X)" aria-label="Panic">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </button>
+        <button id="settingsBtn" class="action-btn" title="Settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Center Stage: Hero Power Switch -->
+    <section class="hero-stage">
+      <div class="power-assembly">
+        <button id="powerBtn" class="power-trigger" aria-label="Toggle VPN">
+          <div class="power-halo"></div>
+          <svg class="power-symbol" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+            <line x1="12" y1="2" x2="12" y2="12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="connection-status">
+        <span id="statusDot" class="pulse-dot disconnected"></span>
+        <span id="statusText" class="status-label">DISCONNECTED</span>
+      </div>
+    </section>
+
+    <!-- Location Pills (No Emojis) -->
+    <nav class="region-nav" aria-label="Region Selection">
+      <button class="region-pill active" data-id="gw-auto-live">Auto</button>
+      <button class="region-pill" data-id="gw-nl-live">Netherlands</button>
+      <button class="region-pill" data-id="gw-de-live">Germany</button>
+      <button class="region-pill" data-id="gw-us-live">USA</button>
+      <button class="region-pill" data-id="gw-asia-live">Asia</button>
+    </nav>
+
+    <!-- Essential Telemetry Grid -->
+    <section class="telemetry-grid">
+      <div class="telemetry-cell">
+        <span class="cell-label">Anonymous IP</span>
+        <strong id="ipDisplay" class="cell-value">---.---.---.---</strong>
+      </div>
+      <div class="telemetry-cell">
+        <span class="cell-label">Latency</span>
+        <strong id="pingDisplay" class="cell-value accent-green">-- ms</strong>
+      </div>
+      <div class="telemetry-cell">
+        <span class="cell-label">Location</span>
+        <strong id="locationDisplay" class="cell-value">Direct</strong>
+      </div>
+      <div class="telemetry-cell">
+        <span class="cell-label">Security</span>
+        <strong id="scoreDisplay" class="cell-value accent-cyan">100/100</strong>
+      </div>
+    </section>
+
+    <!-- Bottom Utility Bar -->
+    <footer class="app-bottombar">
+      <button id="rotateIpBtn" class="utility-btn">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+        <span>Rotate IP</span>
+      </button>
+
+      <button id="testIpBtn" class="utility-btn">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <span>Verify</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

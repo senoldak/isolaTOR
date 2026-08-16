@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IsolaTOR - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page-container">
+    
+    <!-- Top Header -->
+    <header class="page-header">
+      <div class="brand-section">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-meta">
+          <h1>isola<span class="highlight">TOR</span> <span class="badge">v6.0 PRO</span></h1>
+          <p>Advanced Tor & SOCKS5 Routing, Leak Shield & Node Management</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-body">
+      
+      <!-- Section: Privacy & Shields -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Privacy & Leak Protection</h2>
+          <span class="card-desc">Core browser defenses and session security protocols</span>
+        </div>
+
+        <div class="card-content">
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <label for="webrtcToggle">WebRTC IP Leak Shield</label>
+              <p>Blocks non-proxied UDP to prevent local IP exposure via WebRTC STUN.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="webrtcToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <label for="autoRotateToggle">Automatic Smart IP Rotation</label>
+              <p>Periodically hops to a fresh, lowest-latency exit node every 5 minutes.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="autoRotateToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <label for="autoWipeToggle">Auto-Wipe on Disconnect</label>
+              <p>Purges cookies, cache, and session traces when disconnecting from Tor VPN.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="autoWipeToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <label for="autoConnectToggle">Auto-Connect on Startup</label>
+              <p>Automatically engages Tor VPN tunnel when Google Chrome launches.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="autoConnectToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Split Tunneling -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Split Tunneling (Bypass Rules)</h2>
+          <span class="card-desc">Domains routed directly via your native ISP without going through proxy</span>
+        </div>
+
+        <div class="card-content">
+          <div class="input-group">
+            <textarea id="bypassListArea" rows="3" placeholder="*bank*, *.gov, localhost, 192.168.*, 10.0.*"></textarea>
+            <div class="action-bar">
+              <button id="saveBypassBtn" class="btn btn-secondary">Save Bypass Rules</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Custom Gateways -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Custom Tor Bridge / SOCKS5 Node</h2>
+          <span class="card-desc">Connect to your private Tor daemon or dedicated proxy relay</span>
+        </div>
+
+        <div class="card-content">
+          <div class="form-grid">
+            <div class="field">
+              <label for="gwName">Node Label</label>
+              <input type="text" id="gwName" placeholder="e.g. Private Tor Relay">
+            </div>
+
+            <div class="field">
+              <label for="gwScheme">Protocol</label>
+              <select id="gwScheme">
+                <option value="socks5">SOCKS5 / SOCKS5h (Recommended)</option>
+                <option value="http">HTTP Gateway</option>
+                <option value="https">HTTPS Gateway</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="gwHost">Host / IP</label>
+              <input type="text" id="gwHost" placeholder="127.0.0.1 or node.example.com">
+            </div>
+
+            <div class="field">
+              <label for="gwPort">Port</label>
+              <input type="number" id="gwPort" placeholder="9050">
+            </div>
+          </div>
+
+          <div class="action-bar">
+            <button id="addGatewayBtn" class="btn btn-primary">Add Custom Node</button>
+          </div>
+
+          <div class="node-list" id="customGatewaysList"></div>
+        </div>
+      </section>
+
+      <!-- Section: Cloud & Local Backup -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Configuration Backup & Restore</h2>
+          <span class="card-desc">Export or import your full settings and custom bridges as JSON</span>
+        </div>
+
+        <div class="card-content">
+          <div class="backup-actions">
+            <button id="exportBackupBtn" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span>Export JSON Backup</span>
+            </button>
+            
+            <button id="importBackupBtn" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Restore from Backup</span>
+            </button>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;">
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

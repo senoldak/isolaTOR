@@ -1,0 +1,10 @@
+{
+  "appName": { "message": "IsolaTOR - Tor VPN & Gizlilik Kalkanı" },
+  "appDesc": { "message": "Sıfır kurulumlu Tor & SOCKS5 VPN yönlendirmesi, reklam engelleme ve parmak izi kalkanı." },
+  "connected": { "message": "KORUNUYOR (Tor/VPN Aktif)" },
+  "disconnected": { "message": "KORUNMUYOR (Bağlantı Yok)" },
+  "connecting": { "message": "Bağlanıyor..." },
+  "disconnecting": { "message": "Bağlantı Kesiliyor..." },
+  "notifyConnected": { "message": "IsolaTOR Bağlandı! IP adresiniz maskelendi." },
+  "notifyDisconnected": { "message": "IsolaTOR Bağlantısı Kesildi. Doğrudan bağlantıya geçildi." }
+}

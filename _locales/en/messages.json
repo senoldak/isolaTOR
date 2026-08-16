@@ -1,0 +1,10 @@
+{
+  "appName": { "message": "IsolaTOR - Tor VPN & Privacy Shield" },
+  "appDesc": { "message": "Zero-setup Tor & SOCKS5 VPN routing, ad-blocking, and anti-fingerprint shield." },
+  "connected": { "message": "PROTECTED (Tor/VPN Active)" },
+  "disconnected": { "message": "UNPROTECTED (Disconnected)" },
+  "connecting": { "message": "Connecting..." },
+  "disconnecting": { "message": "Disconnecting..." },
+  "notifyConnected": { "message": "IsolaTOR Connected! Your IP is now masked." },
+  "notifyDisconnected": { "message": "IsolaTOR Disconnected. Traffic restored to direct." }
+}

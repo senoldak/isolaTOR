@@ -1,0 +1,378 @@
+/* ==========================================================================
+   IsolaTOR - Impeccable Design System v6.0
+   Sıfır Kaydırma Çubuğu • Ferah Boşluklar • Kusursuz Tipografi ve Kontrast
+   ========================================================================== */
+
+:root {
+  /* 🟣 Cyber Neon (Default) */
+  --bg-app: #090d16;
+  --bg-surface: rgba(18, 26, 44, 0.7);
+  --border-surface: rgba(255, 255, 255, 0.08);
+  --accent: #a855f7;
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-red: #f43f5e;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --glow-accent: 0 0 24px rgba(168, 85, 247, 0.25);
+  --glow-connected: 0 0 28px rgba(16, 185, 129, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 🟢 Matrix Green */
+body[data-theme="matrix"] {
+  --bg-app: #030a05;
+  --bg-surface: rgba(6, 26, 12, 0.75);
+  --border-surface: rgba(34, 197, 94, 0.15);
+  --accent: #22c55e;
+  --accent-cyan: #10b981;
+  --glow-accent: 0 0 24px rgba(34, 197, 94, 0.25);
+}
+
+/* 🔴 Blood Red */
+body[data-theme="blood"] {
+  --bg-app: #0c0406;
+  --bg-surface: rgba(30, 8, 14, 0.75);
+  --border-surface: rgba(244, 63, 94, 0.15);
+  --accent: #f43f5e;
+  --accent-cyan: #fb7185;
+  --glow-accent: 0 0 24px rgba(244, 63, 94, 0.25);
+}
+
+/* 🌑 Midnight Stealth */
+body[data-theme="midnight"] {
+  --bg-app: #070709;
+  --bg-surface: rgba(22, 22, 26, 0.85);
+  --border-surface: rgba(255, 255, 255, 0.06);
+  --accent: #94a3b8;
+  --accent-cyan: #cbd5e1;
+  --glow-accent: 0 0 24px rgba(148, 163, 184, 0.15);
+}
+
+/* Reset & Global Lock */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  width: 340px;
+  height: 390px;
+  max-height: 390px;
+  overflow: hidden !important;
+  background-color: var(--bg-app);
+  font-family: var(--font-stack);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* App Shell (Ferah Dikey Dağılım) */
+.app-shell {
+  width: 100%;
+  height: 100%;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: 
+    radial-gradient(circle at 10% 0%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 90% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+}
+
+/* Topbar */
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-shield {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.highlight {
+  color: var(--accent-cyan);
+}
+
+.brand-badge {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.action-btn.panic {
+  color: var(--accent-red);
+}
+
+.action-btn.panic:hover {
+  background: var(--accent-red);
+  color: #fff;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+}
+
+/* Center Hero Stage (Güç Anahtarı) */
+.hero-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.power-assembly {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.power-trigger {
+  width: 66px;
+  height: 66px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(145deg, #161f33, #0d1424);
+  border: 2px solid var(--border-surface);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.power-trigger:hover {
+  transform: translateY(-1px) scale(1.03);
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+}
+
+.power-trigger.connected {
+  background: linear-gradient(145deg, #065f46, #022c22);
+  border-color: var(--accent-green);
+  color: #ecfdf5;
+  box-shadow: var(--glow-connected);
+}
+
+.power-trigger.connecting {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  animation: pulse-spin 1.5s linear infinite;
+}
+
+@keyframes pulse-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+}
+
+.pulse-dot.disconnected {
+  background: var(--accent-red);
+  box-shadow: 0 0 8px var(--accent-red);
+}
+
+.pulse-dot.connected {
+  background: var(--accent-green);
+  box-shadow: 0 0 10px var(--accent-green);
+}
+
+.pulse-dot.connecting {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.status-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Region Pills */
+.region-nav {
+  display: flex;
+  gap: 5px;
+  overflow-x: hidden;
+  justify-content: center;
+}
+
+.region-pill {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.region-pill:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.region-pill.active {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Telemetry Grid (2x2 Dengeli Kartlar) */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+}
+
+.telemetry-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cell-label {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cell-value {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accent-green {
+  color: var(--accent-green) !important;
+}
+
+.accent-cyan {
+  color: var(--accent-cyan) !important;
+}
+
+/* Bottombar */
+.app-bottombar {
+  display: flex;
+  gap: 8px;
+}
+
+.utility-btn {
+  flex: 1;
+  height: 28px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.utility-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
